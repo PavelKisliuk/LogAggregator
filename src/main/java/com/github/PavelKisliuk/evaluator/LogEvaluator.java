@@ -7,6 +7,7 @@ package com.github.PavelKisliuk.evaluator;
 import com.github.PavelKisliuk.model.Log;
 import com.github.PavelKisliuk.predicate.LogPredicate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -68,6 +69,22 @@ public class LogEvaluator implements Runnable {
 	 */
 	public List<Log> get(Integer key) {
 		return logGroup.get(key);
+	}
+
+	/**
+	 * Reposition {@code Log} instance to one list.
+	 * <p>
+	 *
+	 * @return {@code List} of log's.
+	 */
+	public List<Log> toList() {
+		ArrayList<Log> list = new ArrayList<>();
+		for(int i = 1; i <= logGroup.size(); i++) {
+			if(!logGroup.get(i).isEmpty()) {
+				list.addAll(logGroup.get(i));
+			}
+		}
+		return list;
 	}
 
 	/**
