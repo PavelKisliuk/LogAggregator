@@ -101,7 +101,10 @@ public class LogReader implements Runnable {
 		while ((currentNumber = fileNumber.getAndIncrement()) <= fileAmount) {
 			try (BufferedReader reader = Files.newBufferedReader(Paths.get(
 					directory + fileName + currentNumber + EXTENSION))) {
-				logGroup.put(currentNumber, reader.lines().map(Log::new).collect(Collectors.toList()));
+				logGroup.put(currentNumber, reader.lines()
+						.parallel()
+						.map(Log::new)
+						.collect(Collectors.toList()));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
