@@ -1,4 +1,4 @@
-package com.github.PavelKisliuk.reader;
+package com.github.PavelKisliuk.io;
 
 import com.github.PavelKisliuk.model.Log;
 import org.junit.jupiter.api.Test;

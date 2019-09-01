@@ -2,7 +2,7 @@
  *  This is class for education and nothing rights don't reserved.
  */
 
-package com.github.PavelKisliuk.reader;
+package com.github.PavelKisliuk.io;
 
 import com.github.PavelKisliuk.model.Log;
 

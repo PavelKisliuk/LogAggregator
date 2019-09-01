@@ -2,7 +2,7 @@ package com.github.PavelKisliuk.evaluator;
 
 import com.github.PavelKisliuk.model.Log;
 import com.github.PavelKisliuk.predicate.LogPredicate;
-import com.github.PavelKisliuk.reader.LogReader;
+import com.github.PavelKisliuk.io.LogReader;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
