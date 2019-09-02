@@ -86,7 +86,7 @@ class LogCreator {
 	 * <p>
 	 *
 	 * @param necessaryFileAmount is amount of log files.
-	 * @param necessaryLogAmount is amount of log's in one file.
+	 * @param necessaryLogAmount  is amount of log's in one file.
 	 */
 	void create(int necessaryFileAmount, int necessaryLogAmount) {
 		int fileAmount = 0;
