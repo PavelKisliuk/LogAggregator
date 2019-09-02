@@ -7,6 +7,7 @@ package com.github.PavelKisliuk.util;
 import com.github.PavelKisliuk.model.Log;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -43,8 +44,8 @@ public class LogStatistic {
 	/**
 	 * Enum of possible time period.
 	 */
-	enum TimePeriodType {
-		HOUR, DAY, WEEK, MONTH, YEAR
+	public enum TimePeriodType {
+		HOUR, DAY, MONTH, YEAR
 	}
 
 	/**
@@ -64,6 +65,9 @@ public class LogStatistic {
 	 * @return statistic of amount record's for every user.
 	 */
 	public Map<String, Integer> nameStatistic() {
+		if (logList.size() == 0) {
+			return new HashMap<>();
+		}
 		mapStatistic = new TreeMap<>();
 		logList.forEach(this::countUserRecord);
 		return mapStatistic;
@@ -77,6 +81,9 @@ public class LogStatistic {
 	 * @return statistic of amount record's in specify time period.
 	 */
 	public Map<String, Integer> timeStatistic(TimePeriodType timePeriodType) {
+		if (logList.size() == 0) {
+			return new HashMap<>();
+		}
 		this.timePeriodType = timePeriodType;
 		mapStatistic = new TreeMap<>();
 		moment = logList.get(0).getDateTime();
@@ -118,14 +125,6 @@ public class LogStatistic {
 				break;
 			case DAY:
 				if (moment.getDayOfMonth() != log.getDateTime().getDayOfMonth()) {
-					moment = log.getDateTime();
-					mapStatistic.put(moment.toString(), 1);
-				} else {
-					mapStatistic.put(moment.toString(), mapStatistic.get(moment.toString()) + 1);
-				}
-				break;
-			case WEEK:
-				if (moment.getDayOfWeek() != log.getDateTime().getDayOfWeek()) {
 					moment = log.getDateTime();
 					mapStatistic.put(moment.toString(), 1);
 				} else {
