@@ -88,17 +88,17 @@ public class LogPredicate implements Predicate<Log> {
 	 */
 	@Override
 	public boolean test(Log log) {
-		boolean flag = false;
+		boolean flag = true;
 		if (userName != null) {
 			flag = log.getUserName().equals(userName);
 		}
-		if (dateBefore != null) {
+		if (dateBefore != null && flag) {
 			flag = log.getDateTime().isAfter(dateBefore);
 		}
-		if (dateAfter != null) {
+		if (dateAfter != null && flag) {
 			flag = log.getDateTime().isBefore(dateAfter);
 		}
-		if (pattern != null) {
+		if (pattern != null && flag) {
 			flag = pattern.matcher(log.getMessage()).find();
 		}
 		return flag;
